@@ -1,0 +1,25 @@
+[project]
+name = "python-test"
+dependencies = [
+  "click>=8.1.7",
+]
+requires-python = ">=3.11"
+authors = [
+  {name = "Julien Lefaucheur"},
+]
+description = "Python package test"
+readme = "README.md"
+classifiers = [
+  "Programming Language :: Python"
+]
+
+dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = {attr = "src._version.__version__"}
+
+[tool.setuptools]
+packages = ["src", "cli"]
+
+[project.scripts]
+python-test-square = "cli.mycli:main"
