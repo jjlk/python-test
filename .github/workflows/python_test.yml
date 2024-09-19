@@ -13,7 +13,7 @@ jobs:
       - run: pytest src --cov=src
   cli:
     runs-on: ubuntu-latest
-    name: Run pytest
+    name: Run CLI
     steps:
       - uses: ./.github/workflows/common/prepare_python
       - run: python-test-square 3 
