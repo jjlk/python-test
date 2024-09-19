@@ -14,7 +14,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - uses: jjlk/ci-cd/prepare-python@v1
+      - uses: jjlk/ci-cd
         with:
           extra_package: pytest pytest-cov
       - run: pytest src --cov=src
@@ -29,6 +29,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - uses: jjlk/ci-cd/prepare-python@v1
+      - uses: jjlk/ci-cd
       - run: python-test-square 3 
   
