@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Run pytest
     steps:
-      - uses: ./.github/workflows/common/action
+      - uses: ./.github/workflows/common/action.yml
         with:
           extra_package: pytest pytest-cov
       - run: pytest src --cov=src
@@ -15,6 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Run CLI
     steps:
-      - uses: ./.github/workflows/common/action
+      - uses: ./.github/workflows/common/action.yml
       - run: python-test-square 3 
   
