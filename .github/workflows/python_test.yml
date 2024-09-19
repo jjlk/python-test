@@ -3,11 +3,11 @@ run-name: ${{ github.actor }} launching tests
 on: [push]
 
 jobs:
-  pyest:
+  pytest:
     runs-on: ubuntu-latest
     name: Run pytest
     steps:
-      - uses: ./.github/workflows/common/prepare_python
+      - uses: ./.github/workflows/common/action
         with:
           extra_package: pytest pytest-cov
       - run: pytest src --cov=src
@@ -15,6 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Run CLI
     steps:
-      - uses: ./.github/workflows/common/prepare_python
+      - uses: ./.github/workflows/common/action
       - run: python-test-square 3 
   
