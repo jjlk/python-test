@@ -1,0 +1,35 @@
+name: Tests
+run-name: ${{ github.actor }} launching tests
+on: [push]
+
+jobs:
+
+  pytest:
+    runs-on: ubuntu-latest
+    name: Run pytest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: jjlk/ci-cd@main
+        with:
+          install_extra_package: true
+          extra_package: pytest pytest-cov
+      - run: pytest src --cov=src
+
+  cli:
+    runs-on: ubuntu-latest
+    name: Run CLI
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: jjlk/ci-cd@main
+      - run: python-test-square 3 
+  
