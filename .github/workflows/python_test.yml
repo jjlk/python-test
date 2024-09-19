@@ -3,18 +3,32 @@ run-name: ${{ github.actor }} launching tests
 on: [push]
 
 jobs:
+
   pytest:
     runs-on: ubuntu-latest
     name: Run pytest
     steps:
-      - uses: ./.github/workflows/common/action.yml
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: ./.github/workflows/common/prepare_python.yml
         with:
           extra_package: pytest pytest-cov
       - run: pytest src --cov=src
+
   cli:
     runs-on: ubuntu-latest
     name: Run CLI
     steps:
-      - uses: ./.github/workflows/common/action.yml
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: ./.github/workflows/common/prepare_python.yml
       - run: python-test-square 3 
   
