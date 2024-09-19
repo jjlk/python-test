@@ -16,6 +16,7 @@ jobs:
           python-version: "3.11"
       - uses: jjlk/ci-cd@main
         with:
+          install_extra_package: true
           extra_package: pytest pytest-cov
       - run: pytest src --cov=src
 
